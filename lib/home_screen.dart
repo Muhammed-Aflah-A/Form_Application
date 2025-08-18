@@ -10,8 +10,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final formKey = GlobalKey<FormState>();
-  final genderKey = GlobalKey<FormFieldState>();
-  final dobKey = GlobalKey<FormFieldState>();
+  // final genderKey = GlobalKey<FormFieldState>();
+  // final dobKey = GlobalKey<FormFieldState>();
   String? fullName;
   final fullNameFocus = FocusNode();
   String? dropDownValue;
