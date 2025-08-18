@@ -110,7 +110,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         prefixIcon: Icon(Icons.menu),
                         border: OutlineInputBorder(borderSide: BorderSide()),
                       ),
-
                       items: ["Male", "Female", "Other"].map((gender) {
                         return DropdownMenuItem(
                           value: gender,
@@ -118,8 +117,9 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }).toList(),
                       onChanged: (value) {
-                        // dropDownValue = value;
-
+                        setState(() {
+                          dropDownValue = value;
+                        });
                         FocusScope.of(context).requestFocus(dobFocus);
                       },
                       validator: (value) {
@@ -301,12 +301,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
                           genderKey.currentState!.reset();
-                          passwordController.clear();
-                          formKey.currentState!.reset();
-                          dobController.clear;
                           dobKey.currentState!.reset();
-                          setState(() {});
-
+                          formKey.currentState!.reset();
+                          setState(() {
+                            dobController.clear;
+                            passwordController.clear();
+                          });
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("Form submitted successfully"),
