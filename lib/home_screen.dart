@@ -104,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SizedBox(height: 20),
                     DropdownButtonFormField(
-                      key: genderKey,
+                      // key: genderKey,
                       decoration: InputDecoration(
                         labelText: "Select gender",
                         prefixIcon: Icon(Icons.menu),
@@ -135,7 +135,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SizedBox(height: 20),
                     TextFormField(
-                      key: dobKey,
+                      // key: dobKey,
                       controller: dobController,
                       decoration: InputDecoration(
                         labelText: "Date of birth",
@@ -300,8 +300,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          genderKey.currentState!.reset();
-                          dobKey.currentState!.reset();
+                          // genderKey.currentState!.reset();
+                          // dobKey.currentState!.reset();
                           formKey.currentState!.reset();
                           setState(() {
                             dobController.clear;
