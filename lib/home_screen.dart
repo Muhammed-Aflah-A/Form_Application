@@ -10,12 +10,10 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final formKey = GlobalKey<FormState>();
-  // final genderKey = GlobalKey<FormFieldState>();
-  // final dobKey = GlobalKey<FormFieldState>();
+  final dropkey = GlobalKey<FormFieldState>();
   String? fullName;
   final fullNameFocus = FocusNode();
   String? dropDownValue;
-  String? savedDropDownValue;
   final genderFocus = FocusNode();
   final dobController = TextEditingController();
   String? dob;
@@ -104,7 +102,6 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     SizedBox(height: 20),
                     DropdownButtonFormField(
-                      // key: genderKey,
                       decoration: InputDecoration(
                         labelText: "Select gender",
                         prefixIcon: Icon(Icons.menu),
@@ -117,9 +114,6 @@ class _HomeScreenState extends State<HomeScreen> {
                         );
                       }).toList(),
                       onChanged: (value) {
-                        setState(() {
-                          dropDownValue = value;
-                        });
                         FocusScope.of(context).requestFocus(dobFocus);
                       },
                       validator: (value) {
@@ -129,13 +123,12 @@ class _HomeScreenState extends State<HomeScreen> {
                         return null;
                       },
                       onSaved: (newValue) {
-                        savedDropDownValue = newValue;
+                        dropDownValue = newValue;
                       },
                       focusNode: genderFocus,
                     ),
                     SizedBox(height: 20),
                     TextFormField(
-                      // key: dobKey,
                       controller: dobController,
                       decoration: InputDecoration(
                         labelText: "Date of birth",
@@ -300,11 +293,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          // genderKey.currentState!.reset();
-                          // dobKey.currentState!.reset();
                           formKey.currentState!.reset();
                           setState(() {
-                            dobController.clear;
+                            dobController.clear();
                             passwordController.clear();
                           });
                           ScaffoldMessenger.of(context).showSnackBar(
