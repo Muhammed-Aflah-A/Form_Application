@@ -293,11 +293,11 @@ class _HomeScreenState extends State<HomeScreen> {
                       onPressed: () {
                         if (formKey.currentState!.validate()) {
                           formKey.currentState!.save();
-                          formKey.currentState!.reset();
                           setState(() {
                             dobController.clear();
                             passwordController.clear();
                           });
+                          formKey.currentState!.reset();
                           ScaffoldMessenger.of(context).showSnackBar(
                             SnackBar(
                               content: Text("Form submitted successfully"),
